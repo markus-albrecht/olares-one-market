@@ -4,100 +4,71 @@ olaresManifest.type: app
 apiVersion: 'v2'
 metadata:
   name: vllmministral314brone
-  icon: https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png
-  description: "Ministral 3 14B Reasoning AWQ served via vLLM"
+  icon: https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png
+  description: "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One"
   appid: vllmministral314brone
-  title: Ministral 3 14B Reasoning AWQ (vLLM)
-  version: '1.0.1'
+  title: Ministral 3 14B Reasoning AWQ
+  version: '1.0.2'
   categories:
     - AI
-sharedEntrances:
-  - name: vllmministral314brone
-    host: sharedentrances-vllm
-    port: 0
-    title: Ministral 3 14B Reasoning AWQ (vLLM)
-    invisible: true
-    authLevel: internal
-    icon: https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png
 entrances:
-  - name: vllmministral314broneclient
-    port: 8080
-    host: vllmministral314broneclient
-    title: Ministral 3 14B Reasoning AWQ (vLLM)
-    icon: https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png
+  - name: vllmministral314brone
+    port: 8000
+    host: vllmministral314brone
+    title: Ministral 3 14B Reasoning AWQ
+    icon: https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png
     openMethod: window
     authLevel: internal
 spec:
-  versionName: '1.0.1'
+  versionName: '1.0.2'
+  upgradeDescription: |
+    v1.0.2: refactored to single-app deployment for better sideloading stability. Added explicit GPU request and VRAM limit workarounds.
   fullDescription: |
-    ## IMPORTANT NOTE ##
-    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+    Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.
+    RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
+    AWQ 4-bit precision (~8.5GB VRAM model). 32K context.
+    gpu-memory-utilization 0.92.
+    Apache 2.0 license.
+    Downloads model on first launch and caches it.
+    Exposes an OpenAI-compatible API on port 8000.
 
-    ## MODEL ##
-    Ministral 3 14B Reasoning AWQ served via vLLM.
-    Auto-registers with LiteLLM Gateway if installed.
-
-  developer: vLLM Team
-  website: https://vllm.ai/
-  submitter: orales-market
+  developer: markus-albrecht
+  website: https://github.com/markus-albrecht/olares-one-market
+  sourceCode: https://github.com/markus-albrecht/olares-one-market
+  submitter: markus-albrecht
   locale:
     - en-US
   license:
-    - text: Apache-2.0
+    - text: Apache 2.0
       url: https://github.com/vllm-project/vllm/blob/main/LICENSE
 
-  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
-  limitedCpu: 8000m
-  requiredCpu: 1000m
+  limitedCpu: 16
+  requiredCpu: 4
   requiredDisk: 30Gi
   limitedDisk: 30Gi
-  limitedMemory: 32Gi
+  limitedMemory: 40Gi
   requiredMemory: 4Gi
   requiredGpu: 1Gi
-  limitedGpu: 20Gi
-  {{- else }}
-  requiredMemory: 64Mi
-  limitedMemory: 800Mi
-  requiredDisk: 50Mi
-  limitedDisk: 200Mi
-  requiredCpu: 10m
-  limitedCpu: 800m
-  {{- end }}
+  limitedGpu: 24Gi
 
   supportArch:
     - amd64
-
-  subCharts:
-  - name: vllmministral314broneserver
-    shared: true
-  - name: vllmministral314brone
+  envs:
+    - envName: OLARES_USER_HUGGINGFACE_SERVICE
+      required: true
+      applyOnChange: true
+      valueFrom:
+        envName: OLARES_USER_HUGGINGFACE_SERVICE
+    - envName: OLARES_USER_HUGGINGFACE_TOKEN
+      required: true
+      applyOnChange: true
+      valueFrom:
+        envName: OLARES_USER_HUGGINGFACE_TOKEN
 permission:
   appData: true
-  appCache: true
-  userData:
-    - Home/VLLM
 options:
   apiTimeout: 0
-  appScope:
-  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
-    clusterScoped: true
-    appRef:
-      - vllmministral314brone
-  {{- else }}
-    clusterScoped: false
-  {{- end }}
   dependencies:
     - name: olares
       version: '>=1.12.3-0'
       type: system
-  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
-    - name: litellmgateway
-      type: application
-      version: '>=1.0.0'
-      mandatory: false
-  {{- else }}
-    - name: vllmministral314brone
-      type: application
-      version: '>=1.0.0'
-      mandatory: true
-  {{- end }}

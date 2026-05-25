@@ -1,5 +1,5 @@
 {
-  "hash": "3864ed9d50131877bf730d5e17517baa",
+  "hash": "88f683b927b1edb6353bb60bd2513404",
   "summaries": {
     "33102786": {
       "id": "33102786",
@@ -355,10 +355,10 @@
     "cdd8e3d5": {
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "AI",
-      "description": "Ministral 3 14B Reasoning AWQ served via vLLM",
-      "icon": "https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png",
+      "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
+      "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
       "screenshots": null,
       "tags": null,
       "metadata": null,
@@ -3276,24 +3276,24 @@
       "name": "vllmministral314brone",
       "cfgType": "app",
       "chartName": "vllmministral314brone-1.0.1.tgz",
-      "icon": "https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png",
-      "description": "Ministral 3 14B Reasoning AWQ served via vLLM",
+      "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
+      "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
       "appID": "cdd8e3d5",
-      "title": "Ministral 3 14B Reasoning AWQ (vLLM)",
-      "version": "1.0.1",
+      "title": "Ministral 3 14B Reasoning AWQ",
+      "version": "1.0.2",
       "categories": [
         "AI"
       ],
-      "versionName": "1.0.1",
-      "fullDescription": "## IMPORTANT NOTE ##\nThis is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.\n\n## MODEL ##\nMinistral 3 14B Reasoning AWQ served via vLLM.\nAuto-registers with LiteLLM Gateway if installed.\n",
-      "upgradeDescription": "",
+      "versionName": "1.0.2",
+      "fullDescription": "Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.\nRTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.\nAWQ 4-bit precision (~8.5GB VRAM model). 32K context.\ngpu-memory-utilization 0.92.\nApache 2.0 license.\nDownloads model on first launch and caches it.\nExposes an OpenAI-compatible API on port 8000.\n",
+      "upgradeDescription": "v1.0.2: refactored to single-app deployment for better sideloading stability. Added explicit GPU request and VRAM limit workarounds.\n",
       "promoteImage": null,
       "promoteVideo": "",
       "subCategory": "",
       "locale": [
         "en-US"
       ],
-      "developer": "vLLM Team",
+      "developer": "markus-albrecht",
       "requiredMemory": "4294967296",
       "requiredDisk": "32212254720",
       "supportClient": {},
@@ -3301,23 +3301,19 @@
         "amd64"
       ],
       "requiredGPU": "1073741824",
-      "requiredCPU": "1",
+      "requiredCPU": "4",
       "rating": 0,
       "target": "",
       "permission": {
-        "appData": true,
-        "appCache": true,
-        "userData": [
-          "Home/VLLM"
-        ]
+        "appData": true
       },
       "entrances": [
         {
-          "name": "vllmministral314broneclient",
-          "host": "vllmministral314broneclient",
-          "port": 8080,
-          "title": "Ministral 3 14B Reasoning AWQ (vLLM)",
-          "icon": "https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png",
+          "name": "vllmministral314brone",
+          "host": "vllmministral314brone",
+          "port": 8000,
+          "title": "Ministral 3 14B Reasoning AWQ",
+          "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
           "authLevel": "internal",
           "invisible": false,
           "openMethod": "window",
@@ -3327,34 +3323,22 @@
       "middleware": null,
       "options": {
         "apiTimeout": 0,
-        "appScope": {
-          "clusterScoped": true,
-          "appRef": [
-            "vllmministral314brone"
-          ]
-        },
         "dependencies": [
           {
             "name": "olares",
             "version": ">=1.12.3-0",
             "type": "system"
-          },
-          {
-            "name": "litellmgateway",
-            "type": "application",
-            "version": ">=1.0.0",
-            "mandatory": false
           }
         ]
       },
-      "submitter": "orales-market",
+      "submitter": "markus-albrecht",
       "doc": "",
-      "website": "https://vllm.ai/",
+      "website": "https://github.com/markus-albrecht/olares-one-market",
       "featuredImage": "",
-      "sourceCode": "",
+      "sourceCode": "https://github.com/markus-albrecht/olares-one-market",
       "license": [
         {
-          "text": "Apache-2.0",
+          "text": "Apache 2.0",
           "url": "https://github.com/vllm-project/vllm/blob/main/LICENSE"
         }
       ],
@@ -3381,7 +3365,7 @@
       "versionHistory": [
         {
           "appName": "vllmministral314brone",
-          "version": "1.0.1",
+          "version": "1.0.2",
           "versionName": "1.0.1",
           "mergedAt": "2026-05-25T18:00:00.000Z",
           "upgradeDescription": ""
@@ -3923,11 +3907,11 @@
     "qwen3coder30a3bone",
     "llamacppqwen36dflashone",
     "nemotronlabselastic30bnvfp4one",
-    "vllmministral314brone",
     "gemma4e2bone",
     "llamacppqwen36beellamavisionone",
     "qwen36a3bvisionone",
     "vllmgemma426ba4bvisionone",
+    "vllmministral314brone",
     "llamacppqwen36a3bone",
     "vllmqwen3527bone",
     "llamacppqwen36beellamaone",
