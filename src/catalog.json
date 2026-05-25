@@ -1,5 +1,5 @@
 {
-  "hash": "9ce750e9cfbac2843b3bb228621eca6a",
+  "hash": "b8a9151165f9d03af24c1983f3e381f8",
   "summaries": {
     "33102786": {
       "id": "33102786",
@@ -355,7 +355,7 @@
     "cdd8e3d5": {
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "category": "AI",
       "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
       "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
@@ -3275,18 +3275,18 @@
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
       "cfgType": "app",
-      "chartName": "vllmministral314brone-1.0.2.tgz",
+      "chartName": "vllmministral314brone-1.0.3.tgz",
       "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
       "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
       "appID": "cdd8e3d5",
       "title": "Ministral 3 14B Reasoning AWQ",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "categories": [
         "AI"
       ],
-      "versionName": "1.0.2",
+      "versionName": "1.0.3",
       "fullDescription": "Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.\nRTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.\nAWQ 4-bit precision (~8.5GB VRAM model). 32K context.\ngpu-memory-utilization 0.92.\nApache 2.0 license.\nDownloads model on first launch and caches it.\nExposes an OpenAI-compatible API on port 8000.\n",
-      "upgradeDescription": "v1.0.2: refactored to single-app deployment for better sideloading stability. Added explicit GPU request and VRAM limit workarounds.\n",
+      "upgradeDescription": "v1.0.3: clean version synchronisation and single-app refactoring.\n",
       "promoteImage": null,
       "promoteVideo": "",
       "subCategory": "",
@@ -3346,12 +3346,12 @@
       "i18n": {
         "en-US": {
           "metadata": {
-            "title": "Ministral 3 14B Reasoning AWQ (vLLM)",
-            "description": "Ministral 3 14B Reasoning AWQ served via vLLM"
+            "title": "Ministral 3 14B Reasoning AWQ",
+            "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One"
           },
           "entrances": null,
           "spec": {
-            "fullDescription": "## IMPORTANT NOTE ##\nThis is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.\n\n## MODEL ##\nMinistral 3 14B Reasoning AWQ served via vLLM.\nAuto-registers with LiteLLM Gateway if installed.\n",
+            "fullDescription": "Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.\nRTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.\nAWQ 4-bit precision (~8.5GB VRAM model). 32K context.\ngpu-memory-utilization 0.92.\nApache 2.0 license.\nDownloads model on first launch and caches it.\nExposes an OpenAI-compatible API on port 8000.\n",
             "upgradeDescription": ""
           }
         }
@@ -3365,8 +3365,8 @@
       "versionHistory": [
         {
           "appName": "vllmministral314brone",
-          "version": "1.0.2",
-          "versionName": "1.0.2",
+          "version": "1.0.3",
+          "versionName": "1.0.3",
           "mergedAt": "2026-05-25T18:00:00.000Z",
           "upgradeDescription": ""
         }
@@ -3911,8 +3911,8 @@
     "llamacppqwen36beellamavisionone",
     "qwen36a3bvisionone",
     "vllmgemma426ba4bvisionone",
-    "vllmministral314brone",
     "llamacppqwen36a3bone",
+    "vllmministral314brone",
     "vllmqwen3527bone",
     "llamacppqwen36beellamaone",
     "vllmgemma4dflashone",

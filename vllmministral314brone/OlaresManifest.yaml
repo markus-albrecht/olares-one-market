@@ -8,7 +8,7 @@ metadata:
   description: "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One"
   appid: vllmministral314brone
   title: Ministral 3 14B Reasoning AWQ
-  version: '1.0.2'
+  version: '1.0.3'
   categories:
     - AI
 entrances:
@@ -20,9 +20,9 @@ entrances:
     openMethod: window
     authLevel: internal
 spec:
-  versionName: '1.0.2'
+  versionName: '1.0.3'
   upgradeDescription: |
-    v1.0.2: refactored to single-app deployment for better sideloading stability. Added explicit GPU request and VRAM limit workarounds.
+    v1.0.3: clean version synchronisation and single-app refactoring.
   fullDescription: |
     Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.
     RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.

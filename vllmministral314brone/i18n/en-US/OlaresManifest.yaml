@@ -1,12 +1,13 @@
 metadata:
-  title: Ministral 3 14B Reasoning AWQ (vLLM)
-  description: "Ministral 3 14B Reasoning AWQ served via vLLM"
+  title: Ministral 3 14B Reasoning AWQ
+  description: "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One"
 
 spec:
   fullDescription: |
-    ## IMPORTANT NOTE ##
-    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
-
-    ## MODEL ##
-    Ministral 3 14B Reasoning AWQ served via vLLM.
-    Auto-registers with LiteLLM Gateway if installed.
+    Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.
+    RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
+    AWQ 4-bit precision (~8.5GB VRAM model). 32K context.
+    gpu-memory-utilization 0.92.
+    Apache 2.0 license.
+    Downloads model on first launch and caches it.
+    Exposes an OpenAI-compatible API on port 8000.
