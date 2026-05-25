@@ -4,8 +4,8 @@ olaresManifest.type: app
 apiVersion: 'v2'
 metadata:
   name: vllmvoxtral3bone
-  icon: https://orales-one-market.aamsellem.workers.dev/icons/vllmvoxtral3bone.png
-  description: "Voxtral Mini 3B ASR via vLLM — audio transcription and understanding, optimized for Olares One"
+  icon: https://orales-one-market.markus-albrecht.workers.dev/icons/vllmvoxtral3bone.png
+  description: "Voxtral Mini 3B ASR via vLLM — audio transcription and understanding, optimised for Olares One"
   appid: vllmvoxtral3bone
   title: Voxtral Mini 3B ASR One
   version: '1.0.8'
@@ -16,13 +16,13 @@ entrances:
     port: 8000
     host: vllmvoxtral3bone
     title: Voxtral 3B ASR One
-    icon: https://orales-one-market.aamsellem.workers.dev/icons/vllmvoxtral3bone.png
+    icon: https://orales-one-market.markus-albrecht.workers.dev/icons/vllmvoxtral3bone.png
     openMethod: window
     authLevel: internal
 spec:
   versionName: '1.0.0'
   fullDescription: |
-    Mistral Voxtral Mini 3B (audio encoder + Ministral-3B LLM) served via vLLM — optimized for Olares One.
+    Mistral Voxtral Mini 3B (audio encoder + Ministral-3B LLM) served via vLLM — optimised for Olares One.
     RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
     BF16 precision (~9.5GB VRAM). 32K context. Up to 30 min audio transcription.
     2.7x faster than Whisper Large V3. 3.2% WER English.
@@ -31,10 +31,10 @@ spec:
     Downloads model on first launch (~9GB) and caches it.
     Exposes an OpenAI-compatible API on port 8000.
 
-  developer: aamsellem
-  website: https://github.com/aamsellem/olares-one-market
-  sourceCode: https://github.com/aamsellem/olares-one-market
-  submitter: aamsellem
+  developer: markus-albrecht
+  website: https://github.com/markus-albrecht/olares-one-market
+  sourceCode: https://github.com/markus-albrecht/olares-one-market
+  submitter: markus-albrecht
   locale:
     - en-US
   license:

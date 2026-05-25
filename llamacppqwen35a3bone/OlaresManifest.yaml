@@ -4,8 +4,8 @@ olaresManifest.type: app
 apiVersion: 'v2'
 metadata:
   name: llamacppqwen35a3bone
-  icon: https://orales-one-market.aamsellem.workers.dev/icons/llamacppqwen35a3bone.png
-  description: "Qwen3.5 35B-A3B via llama.cpp — optimized for Olares One"
+  icon: https://orales-one-market.markus-albrecht.workers.dev/icons/llamacppqwen35a3bone.png
+  description: "Qwen3.5 35B-A3B via llama.cpp — optimised for Olares One"
   appid: llamacppqwen35a3bone
   title: Qwen3.5 35B-A3B (Olares One)
   version: '1.0.29'
@@ -16,7 +16,7 @@ entrances:
     port: 8080
     host: llamacppqwen35a3bone
     title: Qwen 35B-A3B One
-    icon: https://orales-one-market.aamsellem.workers.dev/icons/llamacppqwen35a3bone.png
+    icon: https://orales-one-market.markus-albrecht.workers.dev/icons/llamacppqwen35a3bone.png
     openMethod: window
     authLevel: internal
 spec:
@@ -24,19 +24,19 @@ spec:
   upgradeDescription: |
     v1.0.25: llama.cpp b8496 → b8667 (Hadamard rotation for KV cache, NVFP4 MMQ kernel, Gemma 4 support). KV cache q8_0 → q4_0 (2x compression, same quality via rotation). Test build.
   fullDescription: |
-    Qwen3.5 35B-A3B (MoE, 3B active) served via llama.cpp — optimized for Olares One.
+    Qwen3.5 35B-A3B (MoE, 3B active) served via llama.cpp — optimised for Olares One.
     RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
     Unsloth Dynamic Q4_K_XL quantization (important layers upcasted to 8/16-bit).
     llama.cpp b8667 with Hadamard rotation for better KV cache quantization.
     KV cache q4_0 (2x smaller than q8_0, same quality via rotation).
-    Flash attention, CUDA graph optimization, and op-offload enabled.
+    Flash attention, CUDA graph optimisation, and op-offload enabled.
     Downloads the GGUF model on first launch (~22GB) and caches it.
     Exposes an OpenAI-compatible API on port 8080.
 
-  developer: aamsellem
-  website: https://github.com/aamsellem/olares-one-market
-  sourceCode: https://github.com/aamsellem/olares-one-market
-  submitter: aamsellem
+  developer: markus-albrecht
+  website: https://github.com/markus-albrecht/olares-one-market
+  sourceCode: https://github.com/markus-albrecht/olares-one-market
+  submitter: markus-albrecht
   locale:
     - en-US
   license:

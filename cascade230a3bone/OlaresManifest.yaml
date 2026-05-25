@@ -4,8 +4,8 @@ olaresManifest.type: app
 apiVersion: 'v2'
 metadata:
   name: cascade230a3bone
-  icon: https://orales-one-market.aamsellem.workers.dev/icons/llamacppnemotron30a3bone.png
-  description: "Nemotron Cascade 2 30B-A3B via llama.cpp — math and code, optimized for Olares One"
+  icon: https://orales-one-market.markus-albrecht.workers.dev/icons/llamacppnemotron30a3bone.png
+  description: "Nemotron Cascade 2 30B-A3B via llama.cpp — math and code, optimised for Olares One"
   appid: cascade230a3bone
   title: Cascade 2 30B-A3B One
   version: '1.0.6'
@@ -16,7 +16,7 @@ entrances:
     port: 8080
     host: cascade230a3bone
     title: Cascade 2 30B One
-    icon: https://orales-one-market.aamsellem.workers.dev/icons/llamacppnemotron30a3bone.png
+    icon: https://orales-one-market.markus-albrecht.workers.dev/icons/llamacppnemotron30a3bone.png
     openMethod: window
     authLevel: internal
 spec:
@@ -25,7 +25,7 @@ spec:
     v1.0.2: llama.cpp b8667 → b8667 (Hadamard rotation). KV cache q4_0 (with Hadamard rotation) → q4_0 (2x compression).
 
   fullDescription: |
-    Nemotron Cascade 2 30B-A3B (Hybrid Mamba-Transformer MoE, 3B active) served via llama.cpp — optimized for Olares One.
+    Nemotron Cascade 2 30B-A3B (Hybrid Mamba-Transformer MoE, 3B active) served via llama.cpp — optimised for Olares One.
     RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
     Q4_K_S quantization (22.5GB model, bartowski imatrix). 64K context (only 6 attention layers = tiny KV cache).
     Gold medal IMO 2025, IOI 2025, ICPC World Finals 2025.
@@ -34,10 +34,10 @@ spec:
     Downloads the GGUF model on first launch (~22.5GB) and caches it.
     Exposes an OpenAI-compatible API on port 8080.
 
-  developer: aamsellem
-  website: https://github.com/aamsellem/olares-one-market
-  sourceCode: https://github.com/aamsellem/olares-one-market
-  submitter: aamsellem
+  developer: markus-albrecht
+  website: https://github.com/markus-albrecht/olares-one-market
+  sourceCode: https://github.com/markus-albrecht/olares-one-market
+  submitter: markus-albrecht
   locale:
     - en-US
   license:

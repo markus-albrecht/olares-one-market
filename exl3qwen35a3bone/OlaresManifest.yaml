@@ -4,8 +4,8 @@ olaresManifest.type: app
 apiVersion: 'v2'
 metadata:
   name: exl3qwen35a3bone
-  icon: https://orales-one-market.aamsellem.workers.dev/icons/llamacppqwen35a3bone.png
-  description: "Qwen3.5 35B-A3B EXL3 4bpw via TabbyAPI + ExLlamaV3 — optimized for Olares One"
+  icon: https://orales-one-market.markus-albrecht.workers.dev/icons/llamacppqwen35a3bone.png
+  description: "Qwen3.5 35B-A3B EXL3 4bpw via TabbyAPI + ExLlamaV3 — optimised for Olares One"
   appid: exl3qwen35a3bone
   title: Qwen3.5 35B EXL3 One
   version: '1.0.15'
@@ -16,23 +16,23 @@ entrances:
     port: 8080
     host: exl3qwen35a3bone
     title: Qwen 35B EXL3 One
-    icon: https://orales-one-market.aamsellem.workers.dev/icons/llamacppqwen35a3bone.png
+    icon: https://orales-one-market.markus-albrecht.workers.dev/icons/llamacppqwen35a3bone.png
     openMethod: window
     authLevel: internal
 spec:
   versionName: '1.0.13'
   fullDescription: |
-    Qwen3.5 35B-A3B (MoE, 3B active) served via TabbyAPI + ExLlamaV3 — optimized for Olares One.
+    Qwen3.5 35B-A3B (MoE, 3B active) served via TabbyAPI + ExLlamaV3 — optimised for Olares One.
     RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
     EXL3 4.09bpw quantization by turboderp (18.24GB model, ~5.7GB free for KV cache).
     ExLlamaV3 custom Marlin-inspired GEMM kernels, native sm_120 Blackwell support.
     Downloads the EXL3 model on first launch (~18GB) and caches it.
     Exposes an OpenAI-compatible API (v1/chat/completions).
 
-  developer: aamsellem
-  website: https://github.com/aamsellem/olares-one-market
-  sourceCode: https://github.com/aamsellem/olares-one-market
-  submitter: aamsellem
+  developer: markus-albrecht
+  website: https://github.com/markus-albrecht/olares-one-market
+  sourceCode: https://github.com/markus-albrecht/olares-one-market
+  submitter: markus-albrecht
   locale:
     - en-US
   license:
