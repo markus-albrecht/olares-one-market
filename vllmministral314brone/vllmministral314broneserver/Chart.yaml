@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: '1.0.0'
+appVersion: '1.0.1'
 description: vLLM server for Ministral 3 14B Reasoning AWQ
 name: vllmministral314broneserver
 type: application
-version: '1.0.0'
+version: '1.0.1'

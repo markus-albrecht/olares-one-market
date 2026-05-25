@@ -1,5 +1,5 @@
 {
-  "hash": "8b011fbe1361c6448771ddf73c98a5d3",
+  "hash": "3864ed9d50131877bf730d5e17517baa",
   "summaries": {
     "33102786": {
       "id": "33102786",
@@ -355,7 +355,7 @@
     "cdd8e3d5": {
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "AI",
       "description": "Ministral 3 14B Reasoning AWQ served via vLLM",
       "icon": "https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png",
@@ -3275,16 +3275,16 @@
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
       "cfgType": "app",
-      "chartName": "vllmministral314brone-1.0.0.tgz",
+      "chartName": "vllmministral314brone-1.0.1.tgz",
       "icon": "https://docs.vllm.ai/en/latest/_images/vllm-logo-text-light.png",
       "description": "Ministral 3 14B Reasoning AWQ served via vLLM",
       "appID": "cdd8e3d5",
       "title": "Ministral 3 14B Reasoning AWQ (vLLM)",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "categories": [
         "AI"
       ],
-      "versionName": "1.0.0",
+      "versionName": "1.0.1",
       "fullDescription": "## IMPORTANT NOTE ##\nThis is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.\n\n## MODEL ##\nMinistral 3 14B Reasoning AWQ served via vLLM.\nAuto-registers with LiteLLM Gateway if installed.\n",
       "upgradeDescription": "",
       "promoteImage": null,
@@ -3381,8 +3381,8 @@
       "versionHistory": [
         {
           "appName": "vllmministral314brone",
-          "version": "1.0.0",
-          "versionName": "1.0.0",
+          "version": "1.0.1",
+          "versionName": "1.0.1",
           "mergedAt": "2026-05-25T18:00:00.000Z",
           "upgradeDescription": ""
         }
@@ -3921,9 +3921,9 @@
   "latest": [
     "llamacppgemma4audione",
     "qwen3coder30a3bone",
-    "vllmministral314brone",
     "llamacppqwen36dflashone",
     "nemotronlabselastic30bnvfp4one",
+    "vllmministral314brone",
     "gemma4e2bone",
     "llamacppqwen36beellamavisionone",
     "qwen36a3bvisionone",
