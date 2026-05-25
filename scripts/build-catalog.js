@@ -117,7 +117,7 @@ function scanApps() {
       tags: null,
       metadata: null,
       source: 1,
-      updated_at: new Date().toISOString(),
+      updated_at: '2026-05-25T18:00:00.000Z',
     };
 
     // Full entry for /api/v1/applications/info
@@ -194,13 +194,13 @@ function scanApps() {
         appName: appName,
         version: meta.version || chart.version,
         versionName: chart.appVersion || '',
-        mergedAt: new Date().toISOString(),
+        mergedAt: '2026-05-25T18:00:00.000Z',
         upgradeDescription: '',
       }],
       screenshots: null,
       tags: null,
       metadata: null,
-      updated_at: new Date().toISOString(),
+      updated_at: '2026-05-25T18:00:00.000Z',
     };
 
     apps[appId] = { summary, detail };

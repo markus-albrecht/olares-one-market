@@ -38,9 +38,11 @@ spec:
     spec:
       containers:
         - name: vllm-server
-          image: "vllm/vllm-openai:v0.6.6.post1"
+          image: "vllm/vllm-openai:tokenspeed-preview-x86_64-ubuntu2404"
+          command:
+            - "vllm"
+            - "serve"
           args:
-            - "--model"
             - "$(MODEL_NAME)"
             - "--served-model-name"
             - "$(MODEL_ALIAS)"
