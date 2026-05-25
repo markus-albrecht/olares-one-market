@@ -64,8 +64,6 @@ spec:
           env:
             - name: HF_HOME
               value: "/models/huggingface"
-            - name: HF_ENDPOINT
-              value: "{{ .Values.olaresEnv.OLARES_USER_HUGGINGFACE_SERVICE }}"
             - name: HF_TOKEN
               value: "{{ .Values.olaresEnv.OLARES_USER_HUGGINGFACE_TOKEN }}"
             - name: CUDA_DEVICE_MEMORY_LIMIT_0

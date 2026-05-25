@@ -1,5 +1,5 @@
 {
-  "hash": "b8a9151165f9d03af24c1983f3e381f8",
+  "hash": "c6829bbf129557b0c627502002ee84dd",
   "summaries": {
     "33102786": {
       "id": "33102786",
@@ -355,7 +355,7 @@
     "cdd8e3d5": {
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "category": "AI",
       "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
       "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
@@ -3275,18 +3275,18 @@
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
       "cfgType": "app",
-      "chartName": "vllmministral314brone-1.0.3.tgz",
+      "chartName": "vllmministral314brone-1.0.4.tgz",
       "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
       "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
       "appID": "cdd8e3d5",
       "title": "Ministral 3 14B Reasoning AWQ",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "categories": [
         "AI"
       ],
-      "versionName": "1.0.3",
+      "versionName": "1.0.4",
       "fullDescription": "Ministral 3 14B Reasoning AWQ served via vLLM, optimised for Olares One.\nRTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.\nAWQ 4-bit precision (~8.5GB VRAM model). 32K context.\ngpu-memory-utilization 0.92.\nApache 2.0 license.\nDownloads model on first launch and caches it.\nExposes an OpenAI-compatible API on port 8000.\n",
-      "upgradeDescription": "v1.0.3: clean version synchronisation and single-app refactoring.\n",
+      "upgradeDescription": "v1.0.4: fixed malformed HF_ENDPOINT protocol error.\n",
       "promoteImage": null,
       "promoteVideo": "",
       "subCategory": "",
@@ -3365,8 +3365,8 @@
       "versionHistory": [
         {
           "appName": "vllmministral314brone",
-          "version": "1.0.3",
-          "versionName": "1.0.3",
+          "version": "1.0.4",
+          "versionName": "1.0.4",
           "mergedAt": "2026-05-25T18:00:00.000Z",
           "upgradeDescription": ""
         }
@@ -3912,10 +3912,10 @@
     "qwen36a3bvisionone",
     "vllmgemma426ba4bvisionone",
     "llamacppqwen36a3bone",
-    "vllmministral314brone",
     "vllmqwen3527bone",
     "llamacppqwen36beellamaone",
     "vllmgemma4dflashone",
+    "vllmministral314brone",
     "nemotron3nano4bone",
     "cascade230a3bone",
     "devstralsmallone",
