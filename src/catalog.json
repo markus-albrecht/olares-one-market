@@ -1,5 +1,5 @@
 {
-  "hash": "88f683b927b1edb6353bb60bd2513404",
+  "hash": "9ce750e9cfbac2843b3bb228621eca6a",
   "summaries": {
     "33102786": {
       "id": "33102786",
@@ -3275,7 +3275,7 @@
       "id": "cdd8e3d5",
       "name": "vllmministral314brone",
       "cfgType": "app",
-      "chartName": "vllmministral314brone-1.0.1.tgz",
+      "chartName": "vllmministral314brone-1.0.2.tgz",
       "icon": "https://orales-one-market.markus-albrecht.workers.dev/icons/vllmministral314brone.png",
       "description": "Ministral 3 14B Reasoning AWQ via vLLM — optimised for Olares One",
       "appID": "cdd8e3d5",
@@ -3366,7 +3366,7 @@
         {
           "appName": "vllmministral314brone",
           "version": "1.0.2",
-          "versionName": "1.0.1",
+          "versionName": "1.0.2",
           "mergedAt": "2026-05-25T18:00:00.000Z",
           "upgradeDescription": ""
         }
