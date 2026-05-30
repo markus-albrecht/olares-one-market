@@ -1,3 +1,4 @@
+{{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -12,41 +13,12 @@ data:
   LIMIT_MM: '{"image": 1, "audio": 1}'
   SPEC_CONFIG: '{"method":"mtp","model":"google/gemma-4-E4B-it-assistant","num_speculative_tokens":3}'
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: nginx-config
-  namespace: "{{ .Release.Namespace }}"
-data:
-  nginx.conf: |
-    server {
-      listen 8080;
-      location / {
-        add_header X-Frame-Options "";
-        if ($request_uri = "/") {
-          add_header Content-Type text/html;
-          return 200 '<html><body style="font-family:sans-serif;padding:20px;line-height:1.6;max-width:800px;margin:0 auto;background:#f4f7f6"><div style="background:#fff;padding:30px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)"><h1 style="color:#3498db;margin-top:0">vLLM Model Server</h1><p><b>Model Name:</b> google/gemma-4-E4B-it</p><p><b>Model Alias:</b> gemma-4-e4b-mtp</p><p><b>API Endpoint:</b> <code>/v1</code></p><hr style="border:0;border-top:1px solid #eee;margin:20px 0"><p style="color:#666">This is an OpenAI-compatible API server. Use the endpoint above in your client applications.</p></div></body></html>';
-        }
-        proxy_pass http://localhost:8000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_connect_timeout 600s;
-        proxy_send_timeout 600s;
-        proxy_read_timeout 1800s;
-      }
-    }
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: vllmgemma4e4bone
-  name: vllmgemma4e4bone
+    io.kompose.service: vllm
+  name: vllm
   namespace: "{{ .Release.Namespace }}"
   annotations:
     applications.app.bytetrade.io/gpu-inject: "true"
@@ -54,14 +26,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: vllmgemma4e4bone
+      io.kompose.service: vllm
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         io.kompose.network/chrome-default: "true"
-        io.kompose.service: vllmgemma4e4bone
+        io.kompose.service: vllm
     spec:
       containers:
         - name: vllm-server
@@ -101,6 +73,10 @@ spec:
           env:
             - name: HF_HOME
               value: "/models/huggingface"
+            - name: HF_ENDPOINT
+              value: "{{ .Values.olaresEnv.OLARES_USER_HUGGINGFACE_SERVICE }}"
+            - name: HF_TOKEN
+              value: "{{ .Values.olaresEnv.OLARES_USER_HUGGINGFACE_TOKEN }}"
           ports:
             - containerPort: 8000
           livenessProbe:
@@ -125,51 +101,48 @@ spec:
             limits:
               cpu: "16"
               memory: 40Gi
+              nvidia.com/gpu: "1"
             requests:
               cpu: 4000m
               memory: 4Gi
+              nvidia.com/gpu: "1"
           volumeMounts:
             - mountPath: "/models"
               name: models
-        - name: proxy
-          image: "docker.io/beclab/aboveos-bitnami-openresty:1.25.3-2"
-          ports:
-            - containerPort: 8080
-          env:
-            - name: OPENRESTY_CONF_FILE
-              value: /etc/nginx/nginx.conf
-          resources:
-            limits:
-              cpu: 500m
-              memory: 512Mi
-            requests:
-              cpu: 100m
-              memory: 128Mi
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/nginx.conf
-              subPath: nginx.conf
       volumes:
         - name: models
           hostPath:
             path: "{{ .Values.userspace.appData }}/models"
             type: DirectoryOrCreate
-        - name: nginx-config
-          configMap:
-            name: nginx-config
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: vllmgemma4e4bone
-  name: vllmgemma4e4bone
+    io.kompose.service: vllm
+  name: vllm
   namespace: "{{ .Release.Namespace }}"
 spec:
   ports:
     - name: "vllm"
       port: 8000
-      targetPort: 8080
+      targetPort: 8000
   selector:
-    io.kompose.service: vllmgemma4e4bone
+    io.kompose.service: vllm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: vllm
+  name: sharedentrances-vllm
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  ports:
+    - name: "vllm"
+      port: 80
+      targetPort: 8000
+  selector:
+    io.kompose.service: vllm
+{{- end }}

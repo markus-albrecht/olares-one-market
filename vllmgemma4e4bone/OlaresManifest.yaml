@@ -8,34 +8,38 @@ metadata:
   description: "Gemma 4 E4B (Vision + Audio) via vLLM — optimised for Olares One"
   appid: vllmgemma4e4bone
   title: Gemma 4 E4B Voice One
-  version: '1.0.15'
+  version: '1.0.16'
   categories:
     - AI
+sharedEntrances:
+  - name: vllmgemma4e4bone
+    host: sharedentrances-vllm
+    port: 0
+    title: Gemma 4 E4B Voice One
+    invisible: true
+    authLevel: internal
+    icon: https://orales-one-market.markus-albrecht.workers.dev/icons/vllmgemma4e4bone.png
 entrances:
   - name: vllmgemma4e4bone
-    port: 8000
+    port: 8080
     host: vllmgemma4e4bone
     title: Gemma 4 E4B Voice One
     icon: https://orales-one-market.markus-albrecht.workers.dev/icons/vllmgemma4e4bone.png
     openMethod: window
     authLevel: internal
 spec:
-  versionName: '1.0.15'
+  versionName: '1.0.16'
   upgradeDescription: |
-    v1.0.15: reduce max-model-len (32K -> 16K) and gpu-memory-utilization (0.85 -> 0.75) to fix OOM.
-    v1.0.14: add landing page with model information.
+    v1.0.16: convert to shared app, fix GPU injection OOM, lower VRAM limits (14Gi).
   fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL ##
     Google Gemma 4 E4B (8B params, 4.5B effective) with native audio + vision input + MTP speculative decoding — served via vLLM, optimised for Olares One.
-    RTX 5090M (24GB) + 96GB DDR5 + Core Ultra 9 275HX.
-    Native audio understanding: ask questions about audio, transcribe speech, summarize conversations.
-    Native vision: analyze images, read documents, understand screenshots.
-    Multi-Token Prediction speculative decoding: 178 t/s avg (77% draft acceptance) on Olares One (validated 2026-05-07).
-    BF16 precision (~10GB VRAM model + 0.5 GB MTP drafter). 32K context.
-    gpu-memory-utilization 0.85 — leaves room for TTS alongside.
-    OpenAI-compatible API with audio_url support in chat completions.
-    Apache 2.0 license. Thinking mode with tool calling.
-    Downloads model on first launch (~10GB) and caches it.
-    Exposes an OpenAI-compatible API on port 8000.
+    178 t/s avg with 77% draft acceptance via vLLM PR #41745 (centroids masking + CUDA graph capture). 16K context, BF16, ~10 GB VRAM.
+    Native audio understanding and vision. OpenAI-compatible API with audio_url support.
+    Apache 2.0 license.
 
   developer: markus-albrecht
   website: https://github.com/markus-albrecht/olares-one-market
@@ -47,6 +51,7 @@ spec:
     - text: Apache 2.0
       url: https://www.apache.org/licenses/LICENSE-2.0
 
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
   limitedCpu: 16
   requiredCpu: 4
   requiredDisk: 20Gi
@@ -54,15 +59,42 @@ spec:
   limitedMemory: 40Gi
   requiredMemory: 4Gi
   requiredGpu: 1Gi
-  limitedGpu: 24Gi
+  limitedGpu: 14Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
 
   supportArch:
     - amd64
+  
+  subCharts:
+    - name: vllmgemma4e4boneserver
+      shared: true
+    - name: vllmgemma4e4bone
 permission:
   appData: true
 options:
   apiTimeout: 0
+  appScope:
+    {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - vllmgemma4e4bone
+    {{- else }}
+    clusterScoped: false
+    {{- end }}
   dependencies:
     - name: olares
       version: '>=1.12.3-0'
       type: system
+    {{- if not (and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username)) }}
+    - name: vllmgemma4e4bone
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+    {{- end }}
