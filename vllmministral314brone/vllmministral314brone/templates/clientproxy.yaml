@@ -21,6 +21,10 @@ data:
 
       location / {
         add_header X-Frame-Options "";
+        if ($request_uri = "/") {
+          add_header Content-Type text/html;
+          return 200 '<html><body style="font-family:sans-serif;padding:20px;line-height:1.6;max-width:800px;margin:0 auto;background:#f4f7f6"><div style="background:#fff;padding:30px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)"><h1 style="color:#3498db;margin-top:0">vLLM Model Server</h1><p><b>Model Name:</b> cyankiwi/Ministral-3-14B-Reasoning-2512-AWQ-4bit</p><p><b>Model Alias:</b> ministral-3-14b-reasoning</p><p><b>API Endpoint:</b> <code>/v1</code></p><hr style="border:0;border-top:1px solid #eee;margin:20px 0"><p style="color:#666">This is an OpenAI-compatible API server. Use the endpoint above in your client applications.</p></div></body></html>';
+        }
         proxy_pass http://vllm.vllmministral314broneserver-shared:8000;
       }
     }
