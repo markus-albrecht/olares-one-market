@@ -1,18 +1,5 @@
 {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: vllm-env
-  namespace: "{{ .Release.Namespace }}"
-data:
-  MODEL_NAME: "cyankiwi/Ministral-3-14B-Reasoning-2512-AWQ-4bit"
-  MODEL_ALIAS: "ministral-3-14b-reasoning"
-  MAX_MODEL_LEN: "32768"
-  GPU_MEMORY_UTILIZATION: "0.92"
-  LITELLM_MODEL_NAME: "ministral-3-14b-reasoning"
-  LITELLM_SERVICE_URL: "http://litellm.litellmgatewayserver-shared:4000"
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -74,8 +61,6 @@ spec:
               value: "{{ .Values.olaresEnv.OLARES_USER_HUGGINGFACE_SERVICE }}"
             - name: HF_TOKEN
               value: "{{ .Values.olaresEnv.OLARES_USER_HUGGINGFACE_TOKEN }}"
-            - name: CUDA_DEVICE_MEMORY_LIMIT_0
-              value: "24400m"
           ports:
             - containerPort: 8000
           livenessProbe:
@@ -108,13 +93,36 @@ spec:
           volumeMounts:
             - mountPath: "/models"
               name: models
+      volumes:
+        - name: models
+          hostPath:
+            path: "{{ .Values.userspace.userData }}/VLLM/{{ .Release.Name }}/models"
+            type: DirectoryOrCreate
+      restartPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: litellm-register
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: litellm-register
+  template:
+    metadata:
+      labels:
+        app: litellm-register
+    spec:
+      containers:
         - name: litellm-register
           image: "docker.io/curlimages/curl:8.11.0"
           command:
             - sh
             - '-c'
             - |
-              until curl -sf http://localhost:8000/health > /dev/null 2>&1; do
+              until curl -sf http://vllm.{{ .Release.Namespace }}:8000/health > /dev/null 2>&1; do
                 sleep 10
               done
               LITELLM_KEY="sk-olares-litellm-{{ .Release.Namespace }}"
@@ -139,12 +147,6 @@ spec:
             requests:
               cpu: 5m
               memory: 16Mi
-      volumes:
-        - name: models
-          hostPath:
-            path: "{{ .Values.userspace.userData }}/VLLM/{{ .Release.Name }}/models"
-            type: DirectoryOrCreate
-      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
