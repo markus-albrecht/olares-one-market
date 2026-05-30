@@ -77,10 +77,10 @@ spec:
               path: /health
               port: 8000
               scheme: HTTP
-            initialDelaySeconds: 120
+            initialDelaySeconds: 60
             timeoutSeconds: 10
-            periodSeconds: 15
-            failureThreshold: 120
+            periodSeconds: 20
+            failureThreshold: 200
           resources:
             limits:
               cpu: "16"
