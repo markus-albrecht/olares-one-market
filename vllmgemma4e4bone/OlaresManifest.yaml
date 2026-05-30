@@ -8,7 +8,7 @@ metadata:
   description: "Gemma 4 E4B (Vision + Audio) via vLLM — optimised for Olares One"
   appid: vllmgemma4e4bone
   title: Gemma 4 E4B Voice One
-  version: '1.0.17'
+  version: '1.0.18'
   categories:
     - AI
 sharedEntrances:
@@ -28,10 +28,10 @@ entrances:
     openMethod: window
     authLevel: internal
 spec:
-  versionName: '1.0.17'
+  versionName: '1.0.18'
   upgradeDescription: |
+    v1.0.18: fix Nginx server name conflicts and update landing page metadata.
     v1.0.17: increase startup probe timeout to allow for model download.
-    v1.0.16: convert to shared app, fix GPU injection OOM, lower VRAM limits (14Gi).
   fullDescription: |
     ## IMPORTANT NOTE ##
     This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
